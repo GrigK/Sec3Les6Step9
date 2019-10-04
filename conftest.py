@@ -3,20 +3,12 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
 """
-Встроенная фикстура request может получать данные о текущем запущенном тесте, что позволяет, например,
-сохранять дополнительные данные в отчёт, а также делать многие другие интересные вещи.
-https://docs.pytest.org/en/latest/example/simple.html?highlight=addoption
+ВНИМАНИЕ:  time.sleep(30) добавляет проверяющий самостоятельно!
 """
 
 
 def pytest_addoption(parser):
-    """
-    для запуска :
-        pytest -s -v --tb=short --browser_name=firefox test_conftest.py
-        pytest -s -v --tb=short --browser_name=chrome --language=en test_conftest.py
-    :param parser:
-    """
-    parser.addoption('--browser_name', action='store', default=None,
+    parser.addoption('--browser_name', action='store', default='chrome',
                      help="Choose browser: chrome or firefox")
     parser.addoption('--language', action='store', default='ru',
                      help="Choose language browser: ru/en/es... (default - ru)")
